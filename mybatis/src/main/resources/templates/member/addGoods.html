@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 	  layout:decorate="~{layout/default}">
+ 	  
+ 	<!-- 사용자 정의 contents -->	
+	<th:block layout:fragment="customContents">		
+		<form id="addGoodsForm" th:action="@{/goods/addGoods}" method="post">
+			<table border="1">
+				<tbody>
+					<tr>
+						<td>상품이름</td>
+						<td colspan="2">
+							<input type="text" name="goodsName" style="width: 98%;" disabled="disabled" placeholder="상품의 이름을 입력해주세요."/>
+						</td>
+					</tr>
+					<tr>
+						<td>상품가격</td>
+						<td colspan="2">
+							<input type="text" name="goodsPrice" disabled="disabled" placeholder="상품의 가격을 입력해주세요.">
+						</td>
+					</tr>
+					<tr>
+						<td>판매자아이디</td>
+						<td colspan="2">
+						[[${session.SID}]]
+							<input type="hidden" name="goodsSellerId" th:values="${session.SID}">
+						</td>
+					</tr>
+						<tr>
+						<td>판매등록날짜</td>
+						<td colspan="2">
+							<input type="text" name="goodsRegDate" disabled="disabled">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</th:block>
+</html>
